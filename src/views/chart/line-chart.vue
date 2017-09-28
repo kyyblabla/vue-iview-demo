@@ -104,6 +104,11 @@
                 var myChart = echarts.init(document.getElementById('line'))
                 myChart.setOption(option);
 
+                window.onresize = function () {
+                    //重置容器高宽
+                    myChart.resize();
+                };
+
             })
 
         }

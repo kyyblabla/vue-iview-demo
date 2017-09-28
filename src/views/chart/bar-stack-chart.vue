@@ -111,6 +111,11 @@
                 var myChart = echarts.init(document.getElementById('bar-stack'))
                 myChart.setOption(option);
 
+                window.onresize = function () {
+                    //重置容器高宽
+                    myChart.resize();
+                };
+
             })
 
         }

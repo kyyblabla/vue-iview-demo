@@ -2,7 +2,7 @@
     <div>
 
         <Row :gutter="16">
-            <Col span="12">
+            <Col :sm="24" :md="12">
             <Card>
                 <p slot="title">
                     <Icon type="grid"></Icon>
@@ -10,10 +10,10 @@
                 </p>
                 <line-chart></line-chart>
             </Card>
-
+            <br>
             </Col>
 
-            <Col span="12">
+            <Col :sm="24" :md="12">
             <Card>
                 <p slot="title">
                     <Icon type="grid"></Icon>
@@ -21,6 +21,8 @@
                 </p>
                 <bar-stack-chart></bar-stack-chart>
             </Card>
+
+            <br>
 
             </Col>
 
@@ -35,7 +37,7 @@
                 </p>
                 <map-chart></map-chart>
             </Card>
-
+            <br>
             </Col>
         </Row>
     </div>

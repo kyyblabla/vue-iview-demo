@@ -64,9 +64,14 @@
                     <Icon type="ios-timer"></Icon>
                     完成度示例
                 </p>
+                <a slot="extra" @click="random('c1',1,100)">
+                    <Icon type="ios-loop-strong"></Icon>
+                    刷新
+                </a>
+
                 <div class="card-content">
-                    <i-circle :size="140" :percent="70">
-                        <span class="demo-Circle-inner" style="font-size:24px">80%</span>
+                    <i-circle :size="140" :percent="c1">
+                        <span class="demo-Circle-inner" style="font-size:24px">{{c1}}%</span>
                     </i-circle>
                 </div>
             </Card>
@@ -96,21 +101,25 @@
                     <Icon type="document-text"></Icon>
                     统计信息
                 </p>
+                <a slot="extra" @click="random('consumerUserCount',0,userCount)">
+                    <Icon type="ios-loop-strong"></Icon>
+                    刷新
+                </a>
 
                 <div class="card-content">
                     <i-circle
                             :size="140"
                             :trail-width="4"
                             :stroke-width="5"
-                            :percent="75"
+                            :percent="consumerUserPercent"
                             stroke-linecap="square"
                             stroke-color="#43a3fb">
                         <div class="demo-Circle-custom">
-                            <h1>42,001,776</h1>
+                            <h1>{{consumerUserCount}}</h1>
                             <p>消费人群规模</p>
                             <span>
                 总占人数
-                <i>75%</i>
+                <i>{{consumerUserPercent}}%</i>
             </span>
                         </div>
                     </i-circle>
@@ -121,17 +130,84 @@
 
         </Row>
 
+        <Row :gutter="16">
+            <Col :sm="24" :md="12">
+            <Card>
+                <p slot="title">
+                    <Icon type="wand"></Icon>
+                    活动
+                </p>
+
+                <Steps :current="1">
+                    <Step title="已完成" content="这里是该步骤的描述信息"></Step>
+                    <Step title="进行中" content="这里是该步骤的描述信息"></Step>
+                    <Step title="待进行" content="这里是该步骤的描述信息"></Step>
+                    <Step title="待进行" content="这里是该步骤的描述信息"></Step>
+                </Steps>
+                <br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid debitis dignissimos earum
+                    facilis fugiat illo nesciunt quasi soluta! Ipsum libero necessitatibus pariatur. Consequuntur
+                    expedita ipsam magnam repellendus rerum tempora.</p>
+
+
+                <br>
+            </Card>
+            <br>
+            </Col>
+
+            <Col :sm="24" :md="12">
+            <Card>
+                <p slot="title">
+                    <Icon type="shuffle"></Icon>
+                    步骤
+                </p>
+
+                <Steps :current="1">
+                    <Step title="注册" icon="person-add"></Step>
+                    <Step title="上传头像" icon="camera"></Step>
+                    <Step title="验证邮箱" icon="email"></Step>
+                </Steps>
+                <br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda dolorem eius, inventore ipsum
+                    laudantium nostrum praesentium quidem reiciendis, suscipit ut velit voluptate? Eius illum mollitia
+                    omnis praesentium, quibusdam ut veniam.</p>
+                <br>
+
+            </Card>
+            <br>
+            </Col>
+        </Row>
+
+
     </div>
 </template>
 <script>
     import DemoCarousel from './demo-carousel.vue'
+    import Util from '../libs/util'
+
     export default {
+        data(){
+            return {
+                c1: 80,
+                userCount: 1000000,
+                consumerUserCount: 800000
+            }
+        },
+        computed: {
+            consumerUserPercent(){
+                return parseInt((this.consumerUserCount / this.userCount * 100).toFixed(0))
+            }
+        },
         components: {DemoCarousel},
-        methods: {}
+        methods: {
+            random(key, min, max){
+                this[key] = Util.random(min, max)
+            }
+        }
     };
 </script>
 
-<style rel="stylesheet/less" lang="less">
+<style rel="stylesheet/less" lang="less" scoped>
 
     .card-content {
         height: 150px;
@@ -159,5 +235,9 @@
             font-style: normal;
             color: #3f414d;
         }
+    }
+
+    .ivu-steps.ivu-steps-horizontal {
+        height: 80px;
     }
 </style>

@@ -419,8 +419,8 @@
                 var option = {
                     backgroundColor: '#404a59',
                     title: {
-                        text: 'CCF YOCSEF AC 群友分布图',
-                        subtext: 'CCF YOCSEF 各地AC群',
+                        text: '数据分布图',
+                        subtext: '各地数据分布',
                         sublink: 'http://www.yocsef.org.cn',
                         left: 'center',
                         textStyle: {
@@ -518,6 +518,11 @@
 
                 var myChart = echarts.init(document.getElementById('map'))
                 myChart.setOption(option);
+
+                window.onresize = function () {
+                    //重置容器高宽
+                    myChart.resize();
+                };
 
             })
 
