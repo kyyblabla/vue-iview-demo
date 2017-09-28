@@ -8,7 +8,8 @@
                 </div>
                 <MenuItem name="/">
                     <Icon type="ios-home"></Icon>
-                    <router-link class="router-link" to="/">首页</router-link>
+                    <!--<router-link class="router-link" to="/"></router-link>-->
+                    首页
                 </MenuItem>
                 <Submenu name="2">
                     <template slot="title">
@@ -16,13 +17,16 @@
                         组件展示
                     </template>
                     <MenuItem name="/form">
-                        <router-link class="router-link" to="/form">表单</router-link>
+                        <!--<router-link class="router-link" to="/form"></router-link>-->
+                        表单
                     </MenuItem>
                     <MenuItem name="/table">
-                        <router-link class="router-link" to="/table">表格</router-link>
+                        <!--<router-link class="router-link" to="/table"></router-link>-->
+                        表格
                     </MenuItem>
                     <MenuItem name="/chart">
-                        <router-link class="router-link" to="/chart">图表</router-link>
+                        <!--<router-link class="router-link" to="/chart"></router-link>-->
+                        图表
                     </MenuItem>
                 </Submenu>
                 <Submenu name="3">
@@ -31,7 +35,8 @@
                         视图展示
                     </template>
                     <MenuItem name="/carousel">
-                        <router-link class="router-link" to="/carousel">轮播图</router-link>
+                        <!--<router-link class="router-link" to="/carousel"></router-link>-->
+                        轮播图
                     </MenuItem>
                     <MenuItem name="/container">
                         <!--<router-link class="router-link" to="/container"></router-link>-->
@@ -39,6 +44,7 @@
                     </MenuItem>
                     <MenuItem name="/message">
                         <!--<router-link class="router-link" to="/message"></router-link>-->
+                        消息
                     </MenuItem>
                 </Submenu>
             </Menu>
@@ -86,7 +92,7 @@
         ]),
         methods: {
             onSelect(name){
-
+                this.$router.push(name)
             }
         }
     }
