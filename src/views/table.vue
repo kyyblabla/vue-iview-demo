@@ -68,7 +68,6 @@
 </template>
 <script>
     import expandRow from './expand-row.vue'
-
     export default {
         components: {expandRow},
         data () {

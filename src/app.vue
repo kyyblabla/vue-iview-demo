@@ -47,6 +47,12 @@
                         消息
                     </MenuItem>
                 </Submenu>
+                <MenuItem name="/test">
+                    <Icon type="android-apps"></Icon>
+                    <!--<router-link class="router-link" to="/"></router-link>-->
+                    测试
+                </MenuItem>
+
             </Menu>
             </Col>
             <Col span="19">

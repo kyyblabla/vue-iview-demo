@@ -40,5 +40,11 @@ const routers = [{
         title: '表格'
     },
     component: (resolve) => require(['./views/table.vue'], resolve)
+},{
+    path: '/test',
+    meta: {
+        title: '测试'
+    },
+    component: (resolve) => require(['./views/test.vue'], resolve)
 }];
 export default routers;

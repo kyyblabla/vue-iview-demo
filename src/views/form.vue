@@ -73,7 +73,7 @@
                     </FormItem>
                     <FormItem>
                         <Button type="primary">提交</Button>
-                        <Button type="ghost" style="margin-left: 8px">取消</Button>
+                        <Button type="ghost" @click="handleReset('formItem1')" style="margin-left: 8px">重置</Button>
                     </FormItem>
                 </Form>
 
@@ -137,6 +137,7 @@
                     <FormItem>
                         <Button type="primary" @click="handleSubmit('formValidate')">提交</Button>
                         <Button type="ghost" @click="handleReset('formValidate')" style="margin-left: 8px">重置</Button>
+                        <Button @click="randomFormDate()" style="margin-left: 8px">随机</Button>
                     </FormItem>
                 </Form>
 
@@ -146,6 +147,9 @@
     </div>
 </template>
 <script>
+    import Mock from 'mockjs'
+    var Random = Mock.Random
+
     export default {
         data () {
             return {
@@ -228,6 +232,15 @@
                 }
             }
         },
+        mounted(){
+            let _this = this
+            Random.extend({
+                city: function (date) {
+                    var citys = _this.cityList.map(({value}) => value)
+                    return this.pick(citys)
+                }
+            })
+        },
         methods: {
             handleSubmit (name) {
                 this.$refs[name].validate((valid) => {
@@ -237,6 +250,20 @@
                         this.$Message.error('表单验证失败!');
                     }
                 })
+            },
+            randomFormDate(){
+
+                this.formValidate = {
+                    name: Random.cname(),
+                    mail: Random.email(),
+                    city: Random.city(),
+                    gender: 'male',
+                    interest: [],
+                    date: Random.date(),
+                    time: Random.time(),
+                    desc: Random.csentence(10,50)
+                }
+
             },
             handleReset (name) {
                 this.$refs[name].resetFields();
